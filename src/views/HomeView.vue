@@ -17,6 +17,12 @@
         <p class="text-muted">Search for a city to see the current weather and 5-day forecast</p>
     </div>
   </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5 py-4">
+        <p class="mb-1">Built with Vue.js · OpenWeatherMap API · Deployed on Vercel</p>
+        <p class="mb-0">© 2026 Lee Jun Khang. All rights reserved.</p>
+    </footer>
 </template>
 
 <script>
@@ -139,5 +145,12 @@ h1 {
 .btn-outline-secondary:hover {
   background-color: #1E3A5F;
   color: white;
+}
+
+footer {
+  color: #5B7FA6;
+  font-size: 13px;
+  border-top: 1px solid #C8DFF0;
+  margin-top: 40px;
 }
 </style>

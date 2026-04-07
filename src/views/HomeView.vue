@@ -1,13 +1,21 @@
 <template>
-    <h1>Weather App</h1>
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Weather App</h1>
+
     <c-search-bar @search="handleSearch" />
+
+    <c-loading-spinner v-if="loading" />
+    <c-error-message v-if="error" :message="error" />
+    <c-weather-card v-if="weather" :weather="weather" />
+    <c-forecast-list v-if="forecast.length" :forecast="forecast" />
+  </div>
 </template>
 
 <script>
 import CSearchBar from '../components/SearchBar.vue'
 import CWeatherCard from '../components/WeatherCard.vue'
-import CForeCastList from '../components/ForeCastList.vue'
-import CForeCastCard from '../components/ForeCastCard.vue'
+import CForecastList from '../components/ForeCastList.vue'
+import CForeCastCard from '@/components/ForecastCard.vue'
 import CLoadingSpinner from '../components/LoadingSpinner.vue'
 import CErrorMessage from '../components/ErrorMessage.vue'
 
@@ -18,12 +26,10 @@ export default {
     components: {
         CSearchBar,
         CWeatherCard,
-        CForeCastList,
+        CForecastList,
         CForeCastCard,
         CLoadingSpinner,
         CErrorMessage,
-        getCurrentWeather,
-        getForecast
     },
     data() {
         return {
@@ -34,8 +40,19 @@ export default {
         }
     },
     methods: {
-        handleSearch(city) {
-            console.log('City Name:', city)
+        async handleSearch(city) {
+            this.loading = true
+            this.error = ''
+            this.weather = null
+            this.forecast = []
+            try {
+                this.weather = await getCurrentWeather(city)
+                this.forecast = await getForecast(city)
+            } catch (error) {
+                this.error = 'City not found. Please try again.'
+            } finally {
+                this.loading = false
+            }
         }
     }
 }

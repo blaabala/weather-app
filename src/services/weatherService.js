@@ -16,6 +16,5 @@ export const getForecast = async (city) => {
     throw new Error('Failed to fetch weathers')
   }
   const data = await response.json();
-  console.log(data);
   return data.list.filter(item => item.dt_txt.includes('12:00:00'))
 }

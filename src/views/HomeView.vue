@@ -6,8 +6,11 @@
 
     <c-loading-spinner v-if="loading" />
     <c-error-message v-if="error" :message="error" />
-    <c-weather-card v-if="weather" :weather="weather" />
-    <c-forecast-list v-if="forecast.length" :forecast="forecast" />
+    <button v-if="weather" @click="toggleUnit" class="btn btn-outline-secondary mb-3">
+        Switch to {{ isCelsius ? '°F' : '°C' }}
+    </button>
+    <c-weather-card v-if="weather" :weather="weather" :is-celsius="isCelsius" />
+    <c-forecast-list v-if="forecast.length" :forecast="forecast" :is-celsius="isCelsius" />
   </div>
 </template>
 
@@ -15,7 +18,7 @@
 import CSearchBar from '../components/SearchBar.vue'
 import CWeatherCard from '../components/WeatherCard.vue'
 import CForecastList from '../components/ForeCastList.vue'
-import CForeCastCard from '@/components/ForecastCard.vue'
+import CForecastCard from '@/components/ForeCastCard.vue'
 import CLoadingSpinner from '../components/LoadingSpinner.vue'
 import CErrorMessage from '../components/ErrorMessage.vue'
 
@@ -27,7 +30,7 @@ export default {
         CSearchBar,
         CWeatherCard,
         CForecastList,
-        CForeCastCard,
+        CForecastCard,
         CLoadingSpinner,
         CErrorMessage,
     },
@@ -37,6 +40,7 @@ export default {
             forecast: [],
             loading: false,
             error: '',
+            isCelsius: true
         }
     },
     methods: {
@@ -53,6 +57,9 @@ export default {
             } finally {
                 this.loading = false
             }
+        },
+        toggleUnit() {
+            this.isCelsius = !this.isCelsius
         }
     }
 }

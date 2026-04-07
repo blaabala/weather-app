@@ -111,3 +111,33 @@ export default {
 }
 
 </script>
+
+<style scoped>
+h1 {
+  color: #1E3A5F;
+  font-weight: 800;
+  font-size: 42px;
+}
+
+.btn-primary {
+  background-color: #F6A623;
+  border-color: #F6A623;
+  color: #1E3A5F;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #e09510;
+  border-color: #e09510;
+}
+
+.btn-outline-secondary {
+  border-color: #1E3A5F;
+  color: #1E3A5F;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #1E3A5F;
+  color: white;
+}
+</style>

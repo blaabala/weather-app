@@ -2,7 +2,7 @@
   <div class="forecast-list mt-4">
     <h5 class="mb-3">5-Day Forecast</h5>
     <div class="row g-3">
-      <div class="col-6 col-md-4 col-lg-2half" v-for="(item, index) in forecast" :key="index">
+      <div class="col-6 col-md-4 col-lg" v-for="(item, index) in forecast" :key="index">
         <c-forecast-card :forecast="item" :is-celsius="isCelsius" />
       </div>
     </div>

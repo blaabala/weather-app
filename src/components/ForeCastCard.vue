@@ -33,3 +33,37 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.forecast-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(30, 58, 95, 0.08);
+}
+
+.fw-bold {
+  color: #1E3A5F;
+  font-size: 13px;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  display: block;
+}
+
+p {
+  color: #1E3A5F;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.small {
+  color: #5B7FA6;
+  font-size: 12px;
+  font-weight: 400;
+}
+</style>

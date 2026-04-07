@@ -1,0 +1,14 @@
+body {
+  background: linear-gradient(135deg, #E8F4FD 0%, #C8DFF0 50%, #B0D4EC 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1E3A5F;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #1E3A5F;
+}
+
+p {
+  color: #5B7FA6;
+}

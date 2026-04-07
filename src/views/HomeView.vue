@@ -2,7 +2,7 @@
   <div class="container py-5">
     <h1 class="text-center mb-4">Weather App</h1>
 
-    <c-search-bar @search="handleSearch" :loading="loading" :disabled="loading" />
+    <c-search-bar @search="handleSearch" :loading="loading" />
 
     <c-loading-spinner v-if="loading" />
     <c-error-message v-if="error" :message="error" />
@@ -58,9 +58,12 @@ export default {
                 this.weather = await getCurrentWeather(city)
                 this.forecast = await getForecast(city)
                 localStorage.setItem('lastCity', city)
-                console.log('saved city:', localStorage.getItem('lastCity'))
             } catch (error) {
-                this.error = 'City not found. Please try again.'
+                if (error.message === 'City not found') {
+                    this.error = 'City not found. Please check the spelling and try again.'
+                } else {
+                    this.error = 'Something went wrong. Please check your connection and try again.'
+                }
             } finally {
                 this.loading = false
             }
@@ -71,7 +74,6 @@ export default {
     },
     mounted() {
         const lastCity = localStorage.getItem('lastCity')
-        console.log('lastCity from storage:', lastCity)
         if (lastCity) {
             this.handleSearch(lastCity)
         }

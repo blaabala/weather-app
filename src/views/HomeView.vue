@@ -11,6 +11,11 @@
     </button>
     <c-weather-card v-if="weather" :weather="weather" :is-celsius="isCelsius" />
     <c-forecast-list v-if="forecast.length" :forecast="forecast" :is-celsius="isCelsius" />
+
+    <div v-if="!weather && !loading && !error">
+        <h4 class="mt-3">Check the weather</h4>
+        <p class="text-muted">Search for a city to see the current weather and 5-day forecast</p>
+    </div>
   </div>
 </template>
 

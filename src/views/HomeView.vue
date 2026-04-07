@@ -2,7 +2,7 @@
   <div class="container py-5">
     <h1 class="text-center mb-4">Weather App</h1>
 
-    <c-search-bar @search="handleSearch" />
+    <c-search-bar @search="handleSearch" :loading="loading" :disabled="loading" />
 
     <c-loading-spinner v-if="loading" />
     <c-error-message v-if="error" :message="error" />

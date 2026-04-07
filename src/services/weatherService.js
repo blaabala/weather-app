@@ -26,3 +26,28 @@ export const getForecast = async (city) => {
   const data = await response.json();
   return data.list.filter(item => item.dt_txt.includes('12:00:00'))
 }
+
+export const getWeatherByCoords = async (lat, lon) => {
+  const response = await fetch(`${BASE_URL}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`)
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error('City not found')
+    } else {
+      throw new Error('Network error')
+    }
+  }
+  return response.json()
+}
+
+export const getForecastByCoords = async (lat, lon) => {
+  const response = await fetch(`${BASE_URL}/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`)
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error('City not found')
+    } else {
+      throw new Error('Network error')
+    }
+  }
+  const data = await response.json()
+  return data.list.filter(item => item.dt_txt.includes('12:00:00'))
+}

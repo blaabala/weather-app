@@ -2,7 +2,7 @@
   <div class="container py-5">
     <h1 class="text-center mb-4">Weather App</h1>
 
-    <c-search-bar @search="handleSearch" :loading="loading" />
+    <c-search-bar @search="handleSearch" @locate="getLocation" :loading="loading" />
 
     <c-loading-spinner v-if="loading" />
     <c-error-message v-if="error" :message="error" />
@@ -27,7 +27,7 @@ import CForecastCard from '@/components/ForeCastCard.vue'
 import CLoadingSpinner from '../components/LoadingSpinner.vue'
 import CErrorMessage from '../components/ErrorMessage.vue'
 
-import { getCurrentWeather, getForecast } from '@/services/weatherService'
+import { getCurrentWeather, getForecast, getWeatherByCoords, getForecastByCoords } from '@/services/weatherService'
 
 export default {
     name: 'HomeView',
@@ -70,6 +70,36 @@ export default {
         },
         toggleUnit() {
             this.isCelsius = !this.isCelsius
+        },
+        getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude
+                    const lon = position.coords.longitude
+                    this.searchByCoords(lat, lon)
+                },
+                (error) => {
+                    this.error = 'Unable to get your location.'
+                }
+                )
+            } else {
+                this.error = 'Geolocation is not supported by your browser.'
+            }
+        },
+        async searchByCoords(lat, lon) {
+            this.loading = true
+            this.error = ''
+            this.weather = null
+            this.forecast = []
+            try {
+                this.weather = await getWeatherByCoords(lat, lon)
+                this.forecast = await getForecastByCoords(lat, lon)
+            } catch (error) {
+                this.error = 'Something went wrong. Please check your connection and try again.'
+            } finally {
+                this.loading = false
+            }
         }
     },
     mounted() {

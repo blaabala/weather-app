@@ -1,38 +1,53 @@
-# weather-app
+# Vue Weather App
 
-This template should help get you started developing with Vue 3 in Vite.
+A responsive weather application built with Vue.js that displays real-time weather data and 5-day forecasts using the OpenWeatherMap API.
 
-## Recommended IDE Setup
+## Live Demo
+[View Live](your-vercel-url-here)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
+- Search weather by city name
+- Display current weather — temperature, humidity, wind speed, feels like
+- 5-day weather forecast
+- Toggle between Celsius and Fahrenheit
+- Use my location button with geolocation
+- Saves last searched city automatically
+- Responsive design for mobile and desktop
 
-## Recommended Browser Setup
+## Tech Stack
+- Vue.js 3
+- Bootstrap 5
+- OpenWeatherMap API
+- Vite
+- Deployed on Vercel
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Getting Started
 
-## Customize configuration
+### Prerequisites
+- Node.js
+- OpenWeatherMap API key (free at openweathermap.org)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+### Installation
+1. Clone the repo
+```bash
+   git clone https://github.com/blaabala/weather-app.git
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+2. Install dependencies
+```bash
+   npm install
 ```
 
-### Compile and Minify for Production
+3. Create a `.env` file in the root folder
+VITE_WEATHER_API_KEY=your_api_key_here
 
-```sh
-npm run build
+4. Run the development server
+```bash
+   npm run dev
 ```
+
+## Screenshots
+(add screenshots here later)
+
+## License
+© 2026 Lee Jun Khang. All rights reserved.

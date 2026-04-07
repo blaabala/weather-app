@@ -47,7 +47,7 @@ VITE_WEATHER_API_KEY=your_api_key_here
 ```
 
 ## Screenshots
-(add screenshots here later)
+<img width="1522" height="902" alt="image" src="https://github.com/user-attachments/assets/f052a203-1d02-4a0d-b60a-d4acff96c2d4" />
 
 ## License
 © 2026 Lee Jun Khang. All rights reserved.

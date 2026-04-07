@@ -57,6 +57,8 @@ export default {
             try {
                 this.weather = await getCurrentWeather(city)
                 this.forecast = await getForecast(city)
+                localStorage.setItem('lastCity', city)
+                console.log('saved city:', localStorage.getItem('lastCity'))
             } catch (error) {
                 this.error = 'City not found. Please try again.'
             } finally {
@@ -65,6 +67,13 @@ export default {
         },
         toggleUnit() {
             this.isCelsius = !this.isCelsius
+        }
+    },
+    mounted() {
+        const lastCity = localStorage.getItem('lastCity')
+        console.log('lastCity from storage:', lastCity)
+        if (lastCity) {
+            this.handleSearch(lastCity)
         }
     }
 }
